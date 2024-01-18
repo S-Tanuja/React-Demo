@@ -1,0 +1,24 @@
+.ab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.todo-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    background-color: rgb(128, 128, 248);
+    color: black;
+    padding: 30px;
+    margin: 30px 30px;
+  }
+  
+  .todo-container img {
+    max-width: 100px;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .todo-details {
+    flex-grow: 1;
+  }
