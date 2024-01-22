@@ -2,15 +2,15 @@ import "./todo.css";
 import React, { useEffect, useState } from "react";
 import { deleteIcon, editIcon } from "./images/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { valueDelete, valueUpdate } from "./redux/reducers/conditions";
+import { valueDelete } from "./redux/reducers/conditions";
 import MyDialog from "./courseDialog";
 
 const ToDo = () => {
   const select = useSelector((state) => {
     return state.updatestring.toDoList || [];
   });
-  
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
 
   const [openDialogIndex, setOpenDialogIndex] = useState(null);
 
@@ -33,15 +33,36 @@ const ToDo = () => {
               <p>Status: {todo.status}</p>
             </div>
             <div className="flex justify-content-end">
-              <button onClick={()=>{dispatch(valueDelete(index))}}>
+              <button
+                onClick={() => {
+                  dispatch(valueDelete(index));
+                }}
+              >
                 {deleteIcon}
               </button>
-              <button onClick={() => handleOpenDialog(index)}>{editIcon}</button>
-              <MyDialog open={openDialogIndex === index} onClose={handleCloseDialog} data={todo}/>
+              <button onClick={() => handleOpenDialog(index)}>
+                {editIcon}
+              </button>
+              <MyDialog
+                open={openDialogIndex === index}
+                onClose={handleCloseDialog}
+                data={todo}
+              />
             </div>
           </div>
         );
       })}
+      <button
+        className="button-styling"
+        onClick={()=>{handleOpenDialog(select.length)}}
+      >
+        Add Course +{" "}
+      </button>
+      <MyDialog
+                open={openDialogIndex === select.length}
+                onClose={handleCloseDialog}
+                data={select.length}
+              />
     </div>
   );
 };

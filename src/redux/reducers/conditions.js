@@ -18,6 +18,7 @@ export const updateString = createSlice({
       state.toDoList = newArray;
     },
     valueEdit: (state, action) => {
+      console.log(action.payload);
       let newArray = [...state.toDoList];
       newArray[action.payload.index] = {
         ...newArray[action.payload.index],
@@ -25,10 +26,15 @@ export const updateString = createSlice({
       };
       state.toDoList = newArray;
     },
+    // valueAdd: (state, action) => {
+    //   const newArray = [...state.toDoList];
+    //   newArray.push(action.payload)
+    //   state.toDoList = newArray;
+    // }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { valueUpdate, valueDelete, valueEdit } = updateString.actions;
+export const { valueUpdate, valueDelete, valueEdit, valueAdd } = updateString.actions;
 
 export default updateString;

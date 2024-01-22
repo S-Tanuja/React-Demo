@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import "./todo.css";
-import { valueEdit } from "./redux/reducers/conditions";
+import {  valueEdit } from "./redux/reducers/conditions";
 import { useEffect, useState } from "react";
 
 const MyDialog = ({ open, onClose, data }) => {
@@ -10,6 +10,7 @@ const MyDialog = ({ open, onClose, data }) => {
   const [status, setstatus] = useState("");
   useEffect(() => {
     if (data) {
+      console.log(data);
       setTaskName(data.taskName || "");
       setTotalHrs(data.TotalHrs || "");
       setstatus(data.status || "");
@@ -46,14 +47,14 @@ const MyDialog = ({ open, onClose, data }) => {
        <div className="flex gap-3">
        <button
           onClick={() => {
-            dispatch(
-              valueEdit({
-                taskName: taskName,
-                TotalHrs: TotalHrs,
-                status: status,
-                index: data.index,
-              })
-            );
+            const updatedValue = {
+              taskName: taskName,
+              TotalHrs: TotalHrs,
+              status: status,
+              index: data.index ?? data ,
+            };
+              dispatch(valueEdit(updatedValue)) ;
+        
             onClose();
           }}
         >
