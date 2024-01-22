@@ -1,34 +1,47 @@
 import "./todo.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { deleteIcon, editIcon } from "./images/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { valueUpdate } from "./redux/reducers/conditions.js";
+import { valueDelete, valueUpdate } from "./redux/reducers/conditions";
+import MyDialog from "./courseDialog";
 
-const ToDo = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(valueUpdate("Tanuja"));
-  }, []);
-
+const ToDo = () => {
   const select = useSelector((state) => {
-    return state;
+    return state.updatestring.toDoList || [];
   });
+  
+  const dispatch = useDispatch()
 
-  console.log("select", select);
+  const [openDialogIndex, setOpenDialogIndex] = useState(null);
+
+  const handleOpenDialog = (index) => {
+    setOpenDialogIndex(index);
+  };
+
+  const handleCloseDialog = (index) => {
+    setOpenDialogIndex(null);
+  };
   return (
     <div>
-      <div className="todo-container">
-        <img src={require(`./images/${props.toDoDetails.taskImg}`)} alt="" />
-        <div className="todo-details">
-          <h1>{props.toDoDetails.taskName}</h1>
-          <p>TotalHrs: {props.toDoDetails.TotalHrs}</p>
-          <p>Status: {props.toDoDetails.status}</p>
-        </div>
-        <div className="flex justify-content-end">
-          <button>{deleteIcon}</button>
-          <button>{editIcon}</button>
-        </div>
-      </div>
+      {select.map((todo, index) => {
+        return (
+          <div className="todo-container">
+            <img src={require(`./images/${todo.taskImg}`)} alt="" />
+            <div className="todo-details">
+              <h1>{todo.taskName}</h1>
+              <p>TotalHrs: {todo.TotalHrs}</p>
+              <p>Status: {todo.status}</p>
+            </div>
+            <div className="flex justify-content-end">
+              <button onClick={()=>{dispatch(valueDelete(index))}}>
+                {deleteIcon}
+              </button>
+              <button onClick={() => handleOpenDialog(index)}>{editIcon}</button>
+              <MyDialog open={openDialogIndex === index} onClose={handleCloseDialog} data={todo}/>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

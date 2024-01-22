@@ -22,3 +22,12 @@
   .todo-details {
     flex-grow: 1;
   }
+
+  .arrangefields{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    background-color: rgb(141, 120, 120);
+    padding: 20px;
+  }
