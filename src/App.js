@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Login from "./login.jsx";
-import User from "./userScreen.jsx";
-import SignUp from "./sign-up-form.jsx";
-import ToDo from "./to-do-list.jsx";
+import Login from "./components/login.jsx";
+import User from "./components/userScreen.jsx";
+import SignUp from "./components/sign-up-form.jsx";
+import ToDo from "./components/to-do-list.jsx";
 import { useDispatch } from "react-redux";
 import { valueUpdate } from "./redux/reducers/conditions.js";
 

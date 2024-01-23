@@ -1,8 +1,8 @@
-import "./todo.css";
+import "../todo.css";
 import React, { useEffect, useState } from "react";
-import { deleteIcon, editIcon } from "./images/icons";
+import { deleteIcon, editIcon } from "../images/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { valueDelete } from "./redux/reducers/conditions";
+import { valueDelete } from "../redux/reducers/conditions";
 import MyDialog from "./courseDialog";
 
 const ToDo = () => {
@@ -26,7 +26,7 @@ const ToDo = () => {
       {select.map((todo, index) => {
         return (
           <div className="todo-container">
-            <img src={require(`./images/${todo.taskImg}`)} alt="" />
+            <img src={require(`../images/${todo.taskImg}`)} alt="" />
             <div className="todo-details">
               <h1>{todo.taskName}</h1>
               <p>TotalHrs: {todo.TotalHrs}</p>

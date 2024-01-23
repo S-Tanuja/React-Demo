@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import ToDo from "./to-do-list";
-import "./todo.css"
+import "../todo.css"
 
 const User = () => {
   const location = useLocation();
@@ -8,7 +8,7 @@ const User = () => {
     <div>
       <h1>Hi, {location.state}</h1>
       <h2>Courses</h2>
-      <div className="ab">
+      <div className="container">
       <ToDo/>
     </div>
     </div>

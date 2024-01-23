@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import "./todo.css";
-import {  valueEdit } from "./redux/reducers/conditions";
+import "../todo.css";
+import {  valueEdit } from "../redux/reducers/conditions";
 import { useEffect, useState } from "react";
 
 const MyDialog = ({ open, onClose, data }) => {
@@ -45,7 +45,7 @@ const MyDialog = ({ open, onClose, data }) => {
           }}
         />
        <div className="flex gap-3">
-       <button
+       <button className="button-styling"
           onClick={() => {
             const updatedValue = {
               taskName: taskName,
@@ -60,7 +60,7 @@ const MyDialog = ({ open, onClose, data }) => {
         >
           Save
         </button>
-        <button onClick={onClose}>Close</button>
+        <button className="button-styling" onClick={onClose}>Close</button>
        </div>
       </div>
     </dialog>

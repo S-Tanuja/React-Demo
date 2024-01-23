@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: "",
@@ -34,7 +34,6 @@ export const updateString = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { valueUpdate, valueDelete, valueEdit, valueAdd } = updateString.actions;
 
 export default updateString;
